@@ -14,8 +14,14 @@ struct Args {
     #[clap(short, long)]
     data: Option<String>,
 
-    #[clap(short, long)]
-    verbose: Option<bool>,
+    /// Verbose output including the response headers
+    #[clap(
+        short,
+        long,
+        default_value = "false",
+        help = "Verbose output including the response headers"
+    )]
+    verbose: bool,
 }
 
 #[tokio::main]
@@ -23,19 +29,21 @@ async fn main() {
     let args = Args::parse();
 
     let client = reqwest::Client::new();
-    let mut request_builder = client.get(&args.url).header(ACCEPT, "application/json");
-
-    if let Some(body_data) = &args.data {
-        request_builder = request_builder
+    let request_builder = if let Some(body_data) = &args.data {
+        client
+            .post(&args.url)
+            .header(ACCEPT, "application/json")
             .header(CONTENT_TYPE, "application/json")
-            .body(body_data.to_string());
-    }
+            .body(body_data.to_string())
+    } else {
+        client.get(&args.url).header(ACCEPT, "application/json")
+    };
 
     let response = request_builder.send().await;
 
     match response {
         Ok(resp) => {
-            if args.verbose.unwrap_or(false) {
+            if args.verbose {
                 println!("response headers: {{");
                 for (name, value) in resp.headers() {
                     println!("  {}: {:?}", name, value);
