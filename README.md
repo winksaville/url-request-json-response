@@ -82,69 +82,6 @@ response headers: {
   "status": "OK"
 }
 wink@3900x 24-03-10T18:45:47.278Z:~/prgs/rust/myrepos/url-request-json-response (main)
-$ cargo run https://beaconcha.in/api/v1/validator/195766,198275/execution/performance -v
-    Finished dev [unoptimized + debuginfo] target(s) in 0.04s
-     Running `target/debug/url-request-json-response 'https://beaconcha.in/api/v1/validator/195766,198275/execution/performance' -v`
-response headers: {
-  date: "Sun, 10 Mar 2024 18:46:37 GMT"
-  content-type: "application/json"
-  transfer-encoding: "chunked"
-  connection: "keep-alive"
-  access-control-allow-headers: "*, Authorization"
-  access-control-allow-methods: "*"
-  access-control-allow-origin: "*"
-  ratelimit-limit: "120000"
-  ratelimit-remaining: "119799"
-  ratelimit-reset: "1833203"
-  ratelimit-window: "month"
-  vary: "Cookie"
-  vary: "Accept-Encoding"
-  x-ratelimit-limit-day: "120000"
-  x-ratelimit-limit-hour: "120000"
-  x-ratelimit-limit-minute: "120000"
-  x-ratelimit-limit-month: "120000"
-  x-ratelimit-limit-second: "5"
-  x-ratelimit-remaining-day: "119799"
-  x-ratelimit-remaining-hour: "119799"
-  x-ratelimit-remaining-minute: "119799"
-  x-ratelimit-remaining-month: "119799"
-  x-ratelimit-remaining-second: "4"
-  via: "1.1 google"
-  last-modified: "Sun, 10 Mar 2024 18:45:46 GMT"
-  cache-control: "max-age=12"
-  cf-cache-status: "EXPIRED"
-  permissions-policy: "interest-cohort=()"
-  referrer-policy: "strict-origin-when-cross-origin"
-  strict-transport-security: "max-age=7257600"
-  x-content-type-options: "nosniff"
-  x-frame-options: "DENY"
-  x-xss-protection: "1; mode=block"
-  server: "cloudflare"
-  cf-ray: "862577ed5fce236e-SJC"
-  alt-svc: "h3=\":443\"; ma=86400"
-}
-{
-  "data": [
-    {
-      "performance1d": 0,
-      "performance31d": 34512074457665825,
-      "performance365d": 187531625415343172,
-      "performance7d": 0,
-      "performanceTotal": 250318784306458495,
-      "validatorindex": 198275
-    },
-    {
-      "performance1d": 0,
-      "performance31d": 0,
-      "performance365d": 103323191045454191,
-      "performance7d": 0,
-      "performanceTotal": 310027217653695454,
-      "validatorindex": 195766
-    }
-  ],
-  "status": "OK"
-}
-wink@3900x 24-03-10T18:46:37.147Z:~/prgs/rust/myrepos/url-request-json-response (main)
 ```
 
 ### Determine the epoch of the current ethereum finalized data
