@@ -39,6 +39,9 @@ async fn main() {
         client.get(&args.url).header(ACCEPT, "application/json")
     };
 
+    if args.verbose {
+        println!("Making request to: {:?}", request_builder);
+    }
     let response = request_builder.send().await;
 
     match response {
